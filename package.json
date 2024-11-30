@@ -10,16 +10,20 @@
     "prepare": "husky install",
     "husky": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_4838cf564671b5e"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.61.0",
     "@tanstack/react-query-devtools": "^5.61.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "jotai": "^2.10.2",
     "next": "^15.0.3",
     "next-pwa": "^5.6.0",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
@@ -34,6 +38,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "chromatic": "^11.19.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",

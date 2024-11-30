@@ -1,3 +1,4 @@
+import { colors, radius } from "./src/styles/theme";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -8,10 +9,8 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      colors,
+      radius,
     },
   },
   plugins: [],
