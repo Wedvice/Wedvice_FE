@@ -51,3 +51,7 @@ next-env.d.ts
 .yarn/cache/next-npm-*
 .yarn/cache/@next-swc-win32-x64-msvc-*
 *storybook.log
+
+# # Service Worker 파일 무시
+public/sw.js
+public/workbox-*
