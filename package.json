@@ -14,6 +14,7 @@
     "chromatic": "npx chromatic --project-token=chpt_4838cf564671b5e"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.61.0",
     "@tanstack/react-query-devtools": "^5.61.0",
     "class-variance-authority": "^0.7.1",

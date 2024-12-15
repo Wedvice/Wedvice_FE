@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import LeftArrow from '../../../assets/left_arrow.svg';
 
 const meta: Meta<typeof Button> = {
   title: 'components/Button',
@@ -32,22 +33,63 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Basic: Story = {
+export const BasicButton: Story = {
   args: {
-    children: 'Button',
+    children: 'text',
   },
 };
 
-export const Main: Story = {
+export const PrimaryFillWithArrow: Story = {
   args: {
-    ...Basic.args,
-    variant: 'main',
+    variant: 'primary_fill',
+    children: (
+      <>
+        <LeftArrow fill={'white'} />
+        text
+      </>
+    ),
   },
+  decorators: [
+    (Story) => (
+      <div className="w-[100px]">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const shortButton: Story = {
+export const PrimaryOutline: Story = {
   args: {
-    children: 'Button',
+    ...BasicButton.args,
+    variant: 'primary_outline',
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-[100px]">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const GrayFill: Story = {
+  args: {
+    ...BasicButton.args,
+    variant: 'gray_fill',
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-[100px]">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const GrayOutline: Story = {
+  args: {
+    ...BasicButton.args,
+    variant: 'gray_outline',
   },
   decorators: [
     (Story) => (

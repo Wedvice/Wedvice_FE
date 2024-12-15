@@ -1,46 +1,48 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import { forwardRef, type ButtonHTMLAttributes } from "react";
+import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef, type ButtonHTMLAttributes } from 'react';
 
 const buttonVariants = cva(
-  "inline-flex px-[3px] gap-[6px] items-center justify-center word-break:keep-all disabled:pointer-events-none disabled:opacity-30 transition-colors duration-200 font-medium text-[20px]",
+  'inline-flex px-[3px] gap-4 items-center justify-center word-break:keep-all disabled:pointer-events-none disabled:opacity-30 transition-colors duration-200 font-medium text-[20px]',
   {
     variants: {
       variant: {
-        main: "bg-purple-40 hover:bg-purple-50 text-white",
-        none: "text-white",
+        primary_fill: 'bg-primary-400 text-white',
+        primary_outline:
+          'bg-transparent border border-primary-400 text-primary-500',
+        gray_fill: 'bg-gray-200 text-gray-800',
+        gray_outline: 'bg-transparent border border-gray500 text-gray-800',
+        none: 'text-white',
       },
       rounded: {
-        xl: "rounded-xl",
-        lg: "rounded-lg",
-        md: "rounded-md",
-        sm: "rounded-sm",
-        none: "rounded-none",
+        xl: 'rounded-xl',
+        lg: 'rounded-lg',
+        md: 'rounded-md',
+        sm: 'rounded-sm',
+        none: 'rounded-none',
       },
       width: {
-        full: "w-full",
-        register: "w-[350px]",
+        full: 'w-full',
+        register: 'w-[350px]',
       },
       height: {
-        xl2: "h-[70px]",
-        xl: "h-[58px]",
-        lg: "h-[48px]",
-        md: "h-[40px]",
-        sm: "h-[35px]",
+        lg: 'h-[63px]',
+        md: 'h-[45px]',
+        sm: 'h-[34px]',
       },
       weight: {
-        md: "font-medium",
-        semi: "font-semibold",
-        bold: "font-bold",
+        md: 'font-medium',
+        semi: 'font-semibold',
+        bold: 'font-bold',
       },
     },
     defaultVariants: {
-      variant: "main",
-      rounded: "lg",
-      width: "full",
-      weight: "md",
-      height: "lg",
+      variant: 'primary_fill',
+      rounded: 'lg',
+      width: 'full',
+      weight: 'md',
+      height: 'lg',
     },
-  }
+  },
 );
 
 interface ButtonProps
@@ -63,6 +65,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
-Button.displayName = "Button";
+Button.displayName = 'Button';

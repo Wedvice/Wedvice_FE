@@ -17,7 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="layout">
-        <BaseQueryClientProvider>{children}</BaseQueryClientProvider>
+        <div className="relative w-full h-[100dvh] flex flex-col items-center overflow-hidden bg-black">
+          <BaseQueryClientProvider>
+            <div className="flex flex-grow flex-col w-[100%]">{children}</div>
+          </BaseQueryClientProvider>
+        </div>
       </body>
     </html>
   );
