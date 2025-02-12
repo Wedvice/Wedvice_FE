@@ -8,6 +8,7 @@ type SizeConfigItem = {
   minHeight: number;
   maxHeight: number;
 };
+//
 
 // 정의된 size에 따른 최대/최소 크기 정보
 export const SIZE_CONFIG: Record<MemoSize, SizeConfigItem> = {
