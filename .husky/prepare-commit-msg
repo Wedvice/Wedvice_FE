@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# 커밋 모드 확인
+COMMIT_MODE=$2
+
+# --amend 상태에서는 실행하지 않음
+if [ "$COMMIT_MODE" = "commit" ]; then
+  exit 0
+fi
+
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+PREFIX=""
+
+if [[ "$BRANCH_NAME" =~ ^f/ ]]; then
+  PREFIX="[feat] "
+elif [[ "$BRANCH_NAME" =~ ^c/ ]]; then
+  PREFIX="[chore] "
+elif [[ "$BRANCH_NAME" =~ ^b/ ]]; then
+  PREFIX="[bugfix] "
+elif [[ "$BRANCH_NAME" =~ ^r/ ]]; then
+  PREFIX="[refactor] "
+elif [[ "$BRANCH_NAME" =~ ^s/ ]]; then
+  PREFIX="[style] "
+elif [[ "$BRANCH_NAME" =~ ^t/ ]]; then
+  PREFIX="[test] "
+elif [[ "$BRANCH_NAME" =~ ^d/ ]]; then
+  PREFIX="[docs] "
+fi
+
+if [ ! -z "$PREFIX" ]; then
+  echo "$PREFIX$(cat $1)" > $1
+fi
