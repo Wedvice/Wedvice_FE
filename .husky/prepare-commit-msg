@@ -4,7 +4,7 @@
 COMMIT_MODE=$2
 
 # --amend 상태에서는 실행하지 않음
-if [ "$COMMIT_MODE" = "commit" ]; then
+if [ "$COMMIT_MODE" = "commit" ] || [ "$COMMIT_MODE" = "amend" ];  then
   exit 0
 fi
 
