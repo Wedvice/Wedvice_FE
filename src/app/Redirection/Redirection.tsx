@@ -16,7 +16,7 @@ const Redirection = () => {
       const code = new URL(window.location.href).searchParams.get('code');
 
       // TODO : 임시적으로 리디렉션, 백엔드 통신 후 완료 되어야 함
-      router.push('/'); // Home 경로로 리디렉션
+      router.push('/match-usercode'); // MatchUserCode 경로로 리디렉션
 
       // TODO : 여기에서 인가코드를 백엔드에 쏴주고 백엔드에서 Kakao랑 통신
       if (!code) throw new Error('Authorization code is missing'); //
@@ -32,7 +32,7 @@ const Redirection = () => {
           client_id: `${process.env.NEXT_PUBLIC_REST_API_KEY}`,
           redirect_uri: `${process.env.NEXT_PUBLIC_REDIRECT_URI}`,
           code,
-          client_secret: `${process.env.NEXT_PUBLIC_CLIENT_SECRET}`, 
+          client_secret: `${process.env.NEXT_PUBLIC_CLIENT_SECRET}`,
         },
         {
           headers: {
@@ -58,7 +58,8 @@ const Redirection = () => {
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       console.log('뒤로가기 동작 감지');
-      router.replace('/'); 
+      // TODO : 토큰 혹은 쿠키(세션ID)가 존재할 때 제자리 조건 로직
+      router.replace('/match-usercode');
     };
 
     // popstate 이벤트 리스너 추가
@@ -76,7 +77,9 @@ const Redirection = () => {
     getAccessToken();
   }, []);
 
-  return <div>Loading...</div>;
+  <div className='flex h-screen items-center justify-center text-2xl font-bold text-white'>
+    로그인 중입니다...
+  </div>;
 };
 
 export default Redirection;
