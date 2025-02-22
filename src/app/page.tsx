@@ -1,27 +1,20 @@
-import { Button } from '@/components/atoms/button';
 import Image from 'next/image';
-import LeftArrow from '@/assets/left_arrow.svg';
-
 import LoginButton from '@/features/components/LoginButton';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className='relative w-full h-screen bg-black'>
       <Image
-        src="/icon512_rounded.png"
-        alt="Next.js logo"
-        width={180}
-        height={38}
+        src='/wedy_splash.png'
+        alt='wedy_splash'
+        layout='fill'
+        objectFit='cover'
         priority
       />
-      <div className="w-[96px]">
-        <Button>
-          <LeftArrow />
-          <span>text</span>
-        </Button>
+
+      <div className='absolute bottom-10 left-0 w-full flex justify-center px-6'>
+        <LoginButton />
       </div>
-      <Button>simple button</Button>
-      <LoginButton />
     </div>
   );
 }
