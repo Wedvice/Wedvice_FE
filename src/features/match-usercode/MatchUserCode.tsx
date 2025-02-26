@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export default function MatchUserCode() {
   const [inputValue, setInputValue] = useState<string>('');
+  const [userCode, setUserCode] = useState<string>('무서운츄러스145');
   const router = useRouter();
 
   const handleInput = (value: string) => {
@@ -15,7 +16,7 @@ export default function MatchUserCode() {
   };
 
   const handleConnect = () => {
-    if (inputValue === '무서운휴리스틱145') router.push('/sign-nickname');
+    if (inputValue === '무서운츄러스145') router.push('/sign-nickname');
   };
 
   return (
@@ -39,10 +40,10 @@ export default function MatchUserCode() {
         </p>
       </div>
 
-      <div className='mb-6 w-full max-w-[350px] rounded-lg bg-gray-100 p-5 text-center'>
-        <p className='mb-1 text-sm font-medium text-gray-400'>내 코드</p>
-        <p className='text-lg font-medium font-semibold text-primary-500 underline decoration-indigo-400'>
-          무서운휴리스틱145
+      <div className='mb-6 w-full max-w-[350px] rounded-lg bg-gray-100 p-5 text-center font-medium'>
+        <p className='mb-1 text-sm text-gray-400'>내 코드</p>
+        <p className='text-lg text-primary-500 underline decoration-primary-500'>
+          {userCode}
         </p>
       </div>
 

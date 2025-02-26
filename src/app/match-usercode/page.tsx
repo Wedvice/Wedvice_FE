@@ -1,5 +1,1 @@
-import MatchUserCode from './MatchUserCode';
-
-export default function Page() {
-  return <MatchUserCode />;
-}
+export { default } from '@/features/match-usercode/page';
