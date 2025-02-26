@@ -77,9 +77,11 @@ const Redirection = () => {
     getAccessToken();
   }, []);
 
-  <div className='flex h-screen items-center justify-center text-2xl font-bold text-white'>
-    로그인 중입니다...
-  </div>;
+  return (
+    <div className='flex h-screen items-center justify-center text-xl text-white'>
+      로그인 중입니다...
+    </div>
+  );
 };
 
 export default Redirection;
