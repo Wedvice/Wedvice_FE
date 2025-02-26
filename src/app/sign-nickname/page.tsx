@@ -1,5 +1,1 @@
-import SignNickName from './SignNickName';
-
-export default function Page() {
-  return <SignNickName />;
-}
+export { default } from '@/features/sign-nickname/page';
