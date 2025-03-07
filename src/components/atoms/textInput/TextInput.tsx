@@ -25,11 +25,14 @@ interface TextInputProps {
 }
 
 export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
-  ({ value, onChange, maxLength = 18, placeholder, ...props }, ref) => {
+  ({ value, onChange, maxLength, placeholder, ...props }, ref) => {
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
 
-      if (value === '' || (isValidText(value) && value.length <= maxLength)) {
+      if (
+        value === '' ||
+        (isValidText(value) && (!maxLength || value.length <= maxLength))
+      ) {
         onChange(value);
       }
     };
@@ -37,7 +40,7 @@ export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
     return (
       <div
         ref={ref}
-        className='flex w-[350px] items-center justify-between gap-[38px] rounded-lg bg-gray-100 p-5'
+        className='flex w-full items-center justify-between gap-[38px] rounded-lg bg-gray-100 p-5'
       >
         <input
           type='text'
@@ -50,9 +53,12 @@ export const TextInput = forwardRef<HTMLDivElement, TextInputProps>(
           })}
           {...props}
         />
-        <span
-          className={`text-[14px] ${value.trim() ? 'text-gray-600' : 'text-gray-400'}`}
-        >{`${value.length}/${maxLength}`}</span>
+
+        {maxLength && (
+          <span
+            className={`text-[14px] ${value.trim() ? 'text-gray-600' : 'text-gray-400'}`}
+          >{`${value.length}/${maxLength}`}</span>
+        )}
       </div>
     );
   },
