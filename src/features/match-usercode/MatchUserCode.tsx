@@ -20,7 +20,7 @@ export default function MatchUserCode() {
   };
 
   return (
-    <div className='mx-auto flex h-screen max-h-[844px] w-full max-w-[390px] flex-col items-center bg-gray-50 px-6 py-10'>
+    <div className='mx-auto flex h-screen max-h-[844px] w-full min-w-[390px] flex-col items-center bg-gray-50 px-6 py-10'>
       <div
         className='left-4 top-4 flex h-[69px] w-full cursor-pointer items-center text-white'
         onClick={() => router.push('/')}
@@ -47,15 +47,19 @@ export default function MatchUserCode() {
         </p>
       </div>
 
-      <TextInput
-        value={inputValue}
-        onChange={handleInput}
-        placeholder='상대 코드 입력'
-      />
+      <div className='w-full max-w-[350px]'>
+        <TextInput
+          value={inputValue}
+          onChange={handleInput}
+          placeholder='상대 코드 입력'
+        />
+      </div>
 
       <div className='absolute bottom-10 left-0 flex w-full justify-center px-6'>
         <Button
-          className='w-full max-w-[350px] rounded-lg py-3 text-lg text-white'
+          className={`w-full max-w-[350px] rounded-lg py-3 text-lg ${
+            inputValue ? 'text-white' : 'text-gray-800'
+          }`}
           variant={inputValue ? 'primary_fill' : 'gray_fill'}
           rounded='lg'
           onClick={handleConnect}
