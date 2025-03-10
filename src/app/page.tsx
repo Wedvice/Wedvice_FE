@@ -3,9 +3,16 @@ import LoginButton from '@/features/components/LoginButton';
 
 export default function Home() {
   return (
-    <div className='relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black'>
-      <div className='absolute left-[-30px] top-[-50px] h-[200px] w-[200px] rounded-full bg-gradient-to-r from-purple-700 via-purple-500 to-transparent opacity-50 blur-3xl'></div>
-      <div className='absolute bottom-[-30px] right-[-50px] h-[250px] w-[250px] rounded-full bg-gradient-to-r from-purple-700 via-purple-500 to-transparent opacity-40 blur-3xl'></div>
+    <div className='relative flex h-screen min-w-[390px] flex-col items-center justify-center overflow-hidden bg-black'>
+      <div className='absolute inset-0'>
+        <Image
+          src='/wedySplashBackgound.png'
+          alt='Background'
+          layout='fill'
+          objectFit='cover'
+          priority
+        />
+      </div>
 
       <div className='absolute top-1/3 flex flex-col items-center'>
         <Image
