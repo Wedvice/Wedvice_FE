@@ -11,8 +11,8 @@ const LoginButton = () => {
 
   return (
     <img
-      src="/kakao_login_medium_wide.png"
-      className="block hover:cursor-pointer"
+      src='/kakao_login_button.png'
+      className='block hover:cursor-pointer'
       onClick={loginHandler}
     />
   );
