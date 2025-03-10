@@ -21,7 +21,7 @@ export default function SignNickName() {
   };
 
   return (
-    <div className='mx-auto flex h-screen max-h-[844px] w-full max-w-[390px] flex-col items-center bg-gray-50 px-6 py-10'>
+    <div className='mx-auto flex h-screen max-h-[844px] w-full min-w-[390px] flex-col items-center bg-gray-50 px-6 py-10'>
       <div
         className='left-4 top-4 flex h-[69px] w-full cursor-pointer items-center text-white'
         onClick={() => router.push('/match-usercode')}
@@ -39,7 +39,7 @@ export default function SignNickName() {
         </p>
       </div>
 
-      <div className='flex h-[61px] items-center justify-between'>
+      <div className='flex h-[61px] w-full min-w-[350px] items-center justify-between'>
         <TextInput
           value={inputValue}
           onChange={handleInput}

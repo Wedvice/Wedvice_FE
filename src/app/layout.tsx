@@ -24,10 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`w-[390px] layout ${pretendard.variable}`}>
+      <body
+        className={`layout mx-auto w-full min-w-[375px] max-w-[480px] ${pretendard.variable}`}
+      >
         <BaseQueryClientProvider>
           <MemoProvider>
-            <div className='h-[100dvh] w-[390px] bg-gray-100 font-pretendard'>
+            <div className='h-[100dvh] bg-gray-100 font-pretendard'>
               {children}
             </div>
           </MemoProvider>
