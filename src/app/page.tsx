@@ -8,9 +8,11 @@ export default function Home() {
         <Image
           src='/wedySplashBackgound.png'
           alt='Background'
-          layout='fill'
-          objectFit='cover'
+          fill
           priority
+          style={{
+            objectFit: 'cover',
+          }}
         />
       </div>
 
