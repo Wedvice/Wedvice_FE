@@ -1,7 +1,7 @@
-import Calendar from 'react-calendar';
+import LeftArrow from '@/assets/wed_icon/icon_16/leftarrow_default.svg';
+import RightArrow from '@/assets/wed_icon/icon_16/rightarrow_default_gray 800.svg';
 import { format, parse } from 'date-fns';
-import LeftArrow from '@/assets/left_arrow.svg';
-import RightArrow from '@/assets/right_arrow.svg';
+import Calendar from 'react-calendar';
 
 import './styles.css';
 

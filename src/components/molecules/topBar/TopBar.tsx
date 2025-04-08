@@ -1,6 +1,6 @@
 'use client';
 
-import LeftArrow from '@/assets/left_arrow_28.svg';
+import LeftArrow from '@/assets/wed_icon/icon_28/leftarrow_default.svg';
 import { getFormattedTime } from '@/utils/time';
 import { useRouter } from 'next/navigation';
 import { forwardRef, ReactNode } from 'react';

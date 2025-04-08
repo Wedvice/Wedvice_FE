@@ -1,38 +1,44 @@
-import Upload from '@/assets/upload.svg';
-import UploadActive from '@/assets/upload_active.svg';
-import { CommentInput } from '@/components/molecules/comment';
-import { ImageUploader } from './ImageUploader';
+import { useState } from 'react';
+import { BottomContent } from './BottomContent';
+import { TextFieldBottom } from './TextFieldBottom';
 
-interface CommentBoxProps {
-  text: string;
-  setText: (text: string) => void;
-}
+export const CommentBox = () => {
+  const [text, setText] = useState<string>('');
+  const [images, setImages] = useState<string[]>([]);
+  const [showGallery, setShowGallery] = useState(false);
+  const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
-export const CommentBox = ({ text, setText }: CommentBoxProps) => {
-  const handleUploadText = () => {
-    // text upload
-    setText('');
+  const handleUpload = () => {
+    // text, image upload
+    if (text.trim()) {
+      setText('');
+    }
+    if (showGallery && images.length > 0) {
+      setImages([]);
+      setShowGallery(false);
+    }
   };
 
   return (
-    <div className='absolute bottom-0 flex w-full items-center justify-between gap-3 bg-gray-100 px-5 py-2'>
-      <ImageUploader />
-
-      <CommentInput
-        value={text}
-        onChange={setText}
-        placeholder='댓글 입력'
-        minHeight={20}
-        maxHeight={42}
-        maxLineCount={3}
+    <div
+      className='absolute bottom-[34px] w-full'
+      style={{ bottom: showGallery ? `${bottomSheetHeight}px` : '34px' }}
+    >
+      <TextFieldBottom
+        text={text}
+        setText={setText}
+        showGallery={showGallery}
+        setShowGallery={setShowGallery}
+        handleUpload={handleUpload}
       />
 
-      <div
-        className={`cursor-pointer rounded-full p-2 ${text.trim() ? 'bg-primary-400' : 'bg-primary-100'}`}
-        onClick={handleUploadText}
-      >
-        {text.trim() ? <UploadActive /> : <Upload />}
-      </div>
+      <BottomContent
+        images={images}
+        setImages={setImages}
+        showGallery={showGallery}
+        setShowGallery={setShowGallery}
+        setBottomSheetHeight={setBottomSheetHeight}
+      />
     </div>
   );
 };

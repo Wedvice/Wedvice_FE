@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CommentBox } from './CommentBox';
 
@@ -14,11 +13,7 @@ export default meta;
 type Story = StoryObj<typeof CommentBox>;
 
 export const Default: Story = {
-  args: {
-    text: '',
-  },
-  render: (args) => {
-    const [text, setText] = useState(args.text);
-    return <CommentBox {...args} text={text} setText={setText} />;
+  render: () => {
+    return <CommentBox />;
   },
 };

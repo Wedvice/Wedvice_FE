@@ -1,0 +1,1 @@
+export { FoldableImage } from './FoldableImage';

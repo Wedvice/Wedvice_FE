@@ -11,12 +11,14 @@
     "husky": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_4838cf564671b5e"
+    "chromatic": "npx chromatic --project-token=chpt_4838cf564671b5e",
+    "svgo": "svgo -f src/assets/wed_icon --recursive"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.61.0",
     "@tanstack/react-query-devtools": "^5.61.0",
+    "@tokens-studio/sd-transforms": "^1.2.9",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,6 +32,8 @@
     "react-calendar": "^5.1.0",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-spring-bottom-sheet": "^3.4.1",
+    "sd-tailwindcss-transformer": "^2.1.0",
+    "style-dictionary": "^4.3.3",
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
@@ -63,6 +67,7 @@
     "postcss": "^8",
     "prettier": "^3.4.2",
     "storybook": "^8.5.2",
+    "svgo": "^3.3.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.6.3",
     "webpack": "^5.96.1",

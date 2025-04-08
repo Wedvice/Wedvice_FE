@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --layout-max-w: 480px;
+  --layout-max-w: 100%;
 }
 
 @layer base {

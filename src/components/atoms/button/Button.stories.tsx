@@ -1,6 +1,6 @@
+import LeftArrow from '@/assets/wed_icon/icon_16/leftarrow_default.svg';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
-import LeftArrow from '../../../assets/left_arrow.svg';
 
 const meta: Meta<typeof Button> = {
   title: 'components/Button',
@@ -49,7 +49,7 @@ export const PrimaryFillWithArrow: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[100px]">
+      <div className='w-[100px]'>
         <Story />
       </div>
     ),
@@ -63,7 +63,7 @@ export const GrayFill: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[100px]">
+      <div className='w-[100px]'>
         <Story />
       </div>
     ),
