@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/atoms/button/Button';
 import TextInput from '@/components/atoms/textInput/TextInput';
-import LeftArrow from '@/assets/left_arrow.svg';
+import LeftArrow from '@/assets/wed_icon/icon_16/leftarrow_default.svg';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
