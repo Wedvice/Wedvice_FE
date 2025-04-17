@@ -2,8 +2,8 @@
 
 import { Button } from '@/components/atoms/button/Button';
 import TextInput from '@/components/atoms/textInput/TextInput';
-import LeftArrow from '@/assets/left_arrow.svg';
-import { useState } from 'react';
+import LeftArrow from '@/assets/wed_icon/icon_16/leftarrow_default.svg';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function MatchUserCode() {
@@ -19,6 +19,35 @@ export default function MatchUserCode() {
     if (inputValue === '무서운츄러스145') router.push('/sign-nickname');
   };
 
+  // 쿠키 기반 로그인 상태 확인
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}auth/status`,
+          {
+            credentials: 'include',
+          },
+        );
+
+        const data = await res.json();
+        console.log('로그인 상태 응답:', data);
+
+        if (data.isLoggedIn) {
+          router.replace('/match-usercode');
+        } else {
+          console.log('로그인 실패 → 홈으로 이동');
+          router.replace('/');
+        }
+      } catch (err) {
+        console.error('로그인 상태 확인 실패:', err);
+        router.replace('/');
+      }
+    };
+
+    checkLoginStatus();
+  }, [router]);
+
   return (
     <div className='mx-auto flex h-screen max-h-[844px] w-full min-w-[390px] flex-col items-center bg-gray-50 px-6 py-10'>
       <div
@@ -32,8 +61,7 @@ export default function MatchUserCode() {
         <h1 className='text-2xl font-semibold text-white'>
           상대방의 코드를 입력해, 연결하세요!
         </h1>
-
-        <p className='mt-2 text-[14px] text-sm font-medium leading-[18.2px] tracking-[-0.025em] text-gray-400'>
+        <p className='mt-2 text-[14px] font-medium leading-[18.2px] tracking-[-0.025em] text-gray-400'>
           내 코드를 상대가 입력하거나, 내가 상대 코드를
           <br />
           입력하면 바로 연결돼요.
