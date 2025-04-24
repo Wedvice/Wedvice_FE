@@ -24,10 +24,10 @@ export default function Home() {
           height={55}
           priority
         />
-        <h2 className='mt-4 w-[350px] text-center text-[24px] font-semibold leading-[31.2px] tracking-[-0.025em] text-white'>
+        <h2 className='mt-4 w-[350px] text-center text-2xl font-semibold leading-[31.2px] tracking-tight text-white'>
           결혼준비 레디? 웨디!
         </h2>
-        <p className='mt-2 text-center text-[12px] font-medium leading-[15.6px] tracking-[-0.025em] text-gray-400'>
+        <p className='mt-2 text-center text-xs font-medium leading-[15.6px] tracking-tight text-gray-400'>
           한 곳에 쏙, 모든 결혼 준비를 한눈에
         </p>
       </div>
