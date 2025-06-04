@@ -23,7 +23,7 @@ const categoryArr = [
 
 interface CalendarForm {
   dueDate: string | null;
-  category: string | '';
+  category: string | null;
   title: string;
   manager: string;
   description: string;
@@ -32,7 +32,7 @@ interface CalendarForm {
 export const AddCalendar = () => {
   const [form, setForm] = useState<CalendarForm>({
     dueDate: null,
-    category: '',
+    category: null,
     title: '',
     manager: '',
     description: '',
@@ -64,7 +64,7 @@ export const AddCalendar = () => {
     <div className='flex h-full w-full flex-col items-center bg-gray-50'>
       <TopBar title='리스트 추가' className='w-full' />
 
-      <section className='scrollbar-hide relative mt-4 flex h-full w-full flex-col items-center gap-5 overflow-y-scroll px-5'>
+      <section className='relative mt-4 flex h-full w-full flex-col items-center gap-5 overflow-y-scroll px-5 scrollbar-hide'>
         <FoldableSelector
           selectedValue={form.dueDate}
           setSelectedValue={(value) => handleFormChange('dueDate', value)}
