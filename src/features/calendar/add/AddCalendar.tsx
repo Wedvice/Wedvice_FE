@@ -41,18 +41,17 @@ export const AddCalendar = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const handleFormChange = (key: keyof CalendarForm, value: string | null) => {
-    setForm((prev) => {
-      const newForm = { ...prev, [key]: value };
-      const isFormValid = Boolean(
-        newForm.dueDate &&
-          newForm.category &&
-          newForm.title &&
-          newForm.manager &&
-          newForm.description,
-      );
-      setIsValid(isFormValid);
-      return newForm;
-    });
+    const newForm = { ...form, [key]: value };
+    setForm(newForm);
+
+    const isFormValid = Boolean(
+      newForm.dueDate &&
+        newForm.category &&
+        newForm.title &&
+        newForm.manager &&
+        newForm.description,
+    );
+    setIsValid(isFormValid);
   };
 
   const handleSubmit = () => {
