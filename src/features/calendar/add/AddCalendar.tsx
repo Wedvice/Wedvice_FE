@@ -7,19 +7,7 @@ import { Button } from '@/components/atoms/button';
 import { ManagerSelect } from '@/components/molecules/managerSelect';
 import { FoldableSelector } from '@/components/molecules/foldableSelector';
 import { TopBar } from '@/components/molecules/topBar';
-
-const categoryArr = [
-  '스튜디오 촬영하기',
-  '스냅 촬영하기',
-  '드레스/정장',
-  '메이크업',
-  '외모 관리',
-  '결혼식 구성 준비',
-  '청첩장',
-  '상견례',
-  '신혼 여행',
-  '신혼집',
-];
+import { TaskCategory } from '@/constants/task/task.enum';
 
 interface CalendarForm {
   dueDate: string | null;
@@ -70,7 +58,7 @@ export const AddCalendar = () => {
         />
 
         <FoldableSelector
-          categoryArray={categoryArr}
+          categoryArray={Object.values(TaskCategory)}
           selectedValue={form.category}
           setSelectedValue={(value) => handleFormChange('category', value)}
         />
