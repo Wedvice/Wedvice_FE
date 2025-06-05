@@ -34,7 +34,8 @@
     "react-spring-bottom-sheet": "^3.4.1",
     "sd-tailwindcss-transformer": "^2.1.0",
     "style-dictionary": "^4.3.3",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "tailwind-scrollbar-hide": "^2.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
