@@ -48,16 +48,15 @@ export default function MatchUserCode() {
   }, [router]);
 
   return (
-    <>
+    <div className='flex min-h-screen w-full flex-col bg-gray-50'>
       <TopBar
         className='flex h-[69px] w-full cursor-pointer items-center bg-gray-50'
         title=''
         time=''
-        onPrimaryButtonClick={() => {
-          router.push('/');
-        }}
+        onPrimaryButtonClick={() => router.push('/')}
       />
-      <div className='mx-auto flex h-screen w-full min-w-[360px] max-w-[430px] flex-col items-center bg-gray-50 px-6 py-10'>
+
+      <div className='mx-auto flex w-full min-w-[360px] max-w-[430px] grow flex-col items-center bg-gray-50 px-6 py-10'>
         <div className='mb-6'>
           <h1 className='text-2xl font-semibold text-white'>
             상대방의 코드를 입력해, 연결하세요!
@@ -83,20 +82,20 @@ export default function MatchUserCode() {
             placeholder='상대 코드 입력'
           />
         </div>
-
-        <div className='absolute bottom-10 left-0 flex w-full justify-center px-6'>
-          <Button
-            className={`w-full max-w-[350px] rounded-lg py-3 text-lg ${
-              inputValue ? 'text-white' : 'text-gray-800'
-            }`}
-            variant={inputValue ? 'primary_fill' : 'gray_fill'}
-            rounded='lg'
-            onClick={handleConnect}
-          >
-            연결하기
-          </Button>
-        </div>
       </div>
-    </>
+
+      <div className='absolute bottom-10 left-0 flex w-full justify-center px-6'>
+        <Button
+          className={`w-full max-w-[350px] rounded-lg py-3 text-lg ${
+            inputValue ? 'text-white' : 'text-gray-800'
+          }`}
+          variant={inputValue ? 'primary_fill' : 'gray_fill'}
+          rounded='lg'
+          onClick={handleConnect}
+        >
+          연결하기
+        </Button>
+      </div>
+    </div>
   );
 }
