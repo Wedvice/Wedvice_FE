@@ -1,5 +1,1 @@
-import Redirection from './Redirection';
-
-export default function Page() {
-  return <Redirection />;
-}
+export { default } from '@/features/Redirection/page';
