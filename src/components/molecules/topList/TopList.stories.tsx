@@ -12,12 +12,15 @@ type Story = StoryObj<typeof TopList>;
 export const inprogress: Story = {
   args: {
     label: 'text',
-    progressText: '0/8',
+    currentCount: 0,
+    totalCount: 8,
   },
 };
 
 export const complete: Story = {
   args: {
     label: 'text',
+    currentCount: 8,
+    totalCount: 8,
   },
 };
