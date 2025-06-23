@@ -20,10 +20,10 @@ const NAV_ITEMS: NavItem[] = [
     href: '/home',
   },
   {
-    label: '테스크',
+    label: '리스트',
     defaultIcon: <AlarmDefaultIcon />,
     activeIcon: <AlarmActiveIcon />,
-    href: '/task',
+    href: '/list',
   },
   {
     label: '달력',
