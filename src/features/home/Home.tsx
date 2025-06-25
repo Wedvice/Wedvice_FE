@@ -1,7 +1,7 @@
 import { BottomNavigation } from '@/components/molecules/bottomNavigation';
 import MemoLink from '@/components/molecules/memo/MemoLink';
 import { Navigation } from '@/components/molecules/navigation';
-import { ProgressCard } from '@/components/molecules/progressCard';
+import { ProgressCard, TabProgressCard } from '@/components/molecules/progress';
 
 export const Home = () => {
   return (
@@ -11,6 +11,7 @@ export const Home = () => {
         <MemoLink />
         {/* TODO : percentage 받아오기 */}
         <ProgressCard percentage={54} />
+        <TabProgressCard />
       </div>
       <BottomNavigation />
     </div>
