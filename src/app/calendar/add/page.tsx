@@ -1,4 +1,4 @@
-import { AddCalendar } from '@/features/calendar/add';
+import { AddCalendar } from '@/features/calendar';
 
 const AddCalendarPage = () => {
   return <AddCalendar />;
