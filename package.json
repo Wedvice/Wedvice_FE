@@ -30,6 +30,7 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-calendar": "^5.1.0",
+    "react-circular-progressbar": "^2.2.0",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-spring-bottom-sheet": "^3.4.1",
     "sd-tailwindcss-transformer": "^2.1.0",
