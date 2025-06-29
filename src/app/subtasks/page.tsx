@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import SubtasksMain from '@/features/subtasks/SubtasksMain';
-import SubtasksTitle from '@/features/subtasks/SubtasksTItle';
 
+export type ManagerType = '예신' | '예랑' | '함께';
 export interface SubtasksMainProps {
   tasks: {
     id: string;
@@ -11,7 +10,7 @@ export interface SubtasksMainProps {
     title: string;
     cost: number;
     date: string;
-    manager: '예신' | '예랑' | '함께';
+    manager: ManagerType;
     onDelete?: () => void;
   }[];
 }
