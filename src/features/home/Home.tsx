@@ -1,7 +1,7 @@
 'use client';
 
 import { BottomNavigation } from '@/components/molecules/bottomNavigation';
-import { HomeListCard } from '@/components/molecules/homeList/homeListCard';
+import { HomeListCard } from '@/components/molecules/homeList';
 import MemoLink from '@/components/molecules/memo/MemoLink';
 import { Navigation } from '@/components/molecules/navigation';
 import { ProgressCard, TabProgressCard } from '@/components/molecules/progress';
