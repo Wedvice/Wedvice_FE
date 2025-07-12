@@ -1,0 +1,120 @@
+.react-calendar {
+  color: #e2e2e8;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: height 0.3s ease;
+  width: 100%;
+}
+
+.react-calendar__month-view,
+.react-calendar__viewContainer,
+.react-calendar__month-view__week,
+.react-calendar__month-view > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.react-calendar__month-view__weeks__week {
+  flex: 1;
+  display: flex;
+}
+
+.react-calendar__tile--active {
+  background: transparent;
+}
+
+.react-calendar__tile--active abbr {
+  background: #9360f9;
+  border-radius: 50%;
+}
+
+.react-calendar__tile--active:hover abbr {
+  background: #9360f9;
+}
+
+.react-calendar__tile:hover abbr {
+  background: #9360f9;
+  border-radius: 50%;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  color: #a9aabc;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.react-calendar__navigation {
+  display: none;
+}
+
+.react-calendar__month-view__days {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  height: 100% !important;
+}
+
+.react-calendar__tile {
+  font-size: 14px;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  color: #e2e2e8;
+  position: relative;
+  padding: 4px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.react-calendar__tile abbr {
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+
+  width: 20px;
+  height: 20px;
+
+  text-decoration: none;
+}
+
+.react-calendar__tile--now {
+  background: transparent;
+}
+
+.react-calendar__tile--now abbr {
+  background: #ffffff;
+  border-radius: 50%;
+  color: #17181c;
+}
+
+.react-calendar__tile--now:hover abbr {
+  background: #ffffff;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth abbr {
+  opacity: 40%;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  text-align: center;
+
+  min-height: 96px;
+}
+
+.react-calendar button:enabled:hover,
+.react-calendar button:enabled:focus {
+  background: transparent;
+}
