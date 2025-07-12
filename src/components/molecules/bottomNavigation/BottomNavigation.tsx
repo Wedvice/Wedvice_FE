@@ -49,7 +49,7 @@ export const BottomNavigation = () => {
   );
 
   return (
-    <nav className='mt-auto rounded-t-[20px] border-t border-gray-300 bg-black/40 px-6 py-3'>
+    <nav className='z-10 mt-auto rounded-t-[20px] border-t border-gray-300 bg-black/40 px-6 py-3'>
       <ul className='flex justify-between'>
         {NAV_ITEMS.map((item) => {
           const active = isActive(item.href);
