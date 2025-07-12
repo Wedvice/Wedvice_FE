@@ -2,7 +2,6 @@ import { BottomSheet } from '@/components/atoms/bottomSheet';
 import { useCalendarContext } from '@/contexts/calendar';
 import { CalendarData, WEEKDAY } from '@/types/calendar/calendarTypes';
 import { useRouter } from 'next/navigation';
-import { CSSProperties } from 'react';
 import { CalendarTodo } from './CalendarTodo';
 
 const BOTTOM_SHEET_MIN_HEIGHT = 403;
@@ -23,13 +22,7 @@ export const CalendarBottomSheet = ({ data }: { data: CalendarData[] }) => {
       defaultSnap={() => BOTTOM_SHEET_MIN_HEIGHT}
       blocking={false}
       header={<BottomSheetHeader selectedDate={selectedDate} />}
-      className='pb-24'
-      style={
-        {
-          '--rsbs-bg': '#17181C',
-          '--rsbs-overlay-rounded': '0px',
-        } as CSSProperties
-      }
+      className='calendar pb-24'
     >
       <BottomSheetContent data={data} />
     </BottomSheet>

@@ -17,3 +17,12 @@
 [data-rsbs-overlay] {
   z-index: 99;
 }
+
+.calendar {
+  --rsbs-bg: #17181c !important;
+  --rsbs-overlay-rounded: 0px !important;
+}
+
+.calendar [data-rsbs-overlay] {
+  border-top: 1px solid #2c2e3a;
+}
