@@ -3,7 +3,7 @@
 import RightArrow from '@/assets/wed_icon/icon_16/rightarrow_default_gray 800.svg';
 import { HomeListItem } from './HomeListItem';
 
-type HomeListType = 'done' | 'todo';
+export type HomeListType = 'done' | 'todo';
 
 const titleMap: Record<HomeListType, string> = {
   done: '완료한 리스트',
