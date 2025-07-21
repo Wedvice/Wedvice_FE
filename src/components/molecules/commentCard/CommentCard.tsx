@@ -1,7 +1,7 @@
 'use client';
 
 import ThreeDot from '@/assets/wed_icon/icon_20/editdot_default.svg';
-import { CommentDropdown } from '@/features/comment/components';
+import { Dropdown } from '@/components/atoms/dropdown';
 import { useDropdown } from '@/hooks/useDropdown';
 import { detailDate } from '@/utils/time';
 
@@ -37,7 +37,9 @@ export const CommentCard = ({ name, text, time }: CommentCardProps) => {
         </div>
         {isDropdownOpen && (
           <div ref={dropdownRef} className='absolute right-0 top-6 z-10'>
-            <CommentDropdown />
+            <Dropdown
+              options={[{ label: '수정하기' }, { label: '삭제하기' }]}
+            />
           </div>
         )}
       </div>
