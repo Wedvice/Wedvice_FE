@@ -3,10 +3,17 @@
 import DownArrow from '@/assets/wed_icon/icon_16/downarrow_default_gray 800.svg';
 import { Dropdown } from '@/components/atoms/dropdown';
 import { useDropdown } from '@/hooks/useDropdown';
-import { useState } from 'react';
 
-export const HomeListDropdown = () => {
-  const [selectedOption, setSelectedOption] = useState('날짜순');
+export type HomeListDropdownType = '날짜순' | '카테고리순';
+interface HomeListDropdownProps {
+  selectedOption: HomeListDropdownType;
+  onSelectAction: (value: HomeListDropdownType) => void;
+}
+
+export const HomeListDropdown = ({
+  selectedOption,
+  onSelectAction,
+}: HomeListDropdownProps) => {
   const { isDropdownOpen, handleToggleDropdown, dropdownRef, triggerRef } =
     useDropdown();
 
@@ -19,7 +26,7 @@ export const HomeListDropdown = () => {
     {
       label: '날짜순',
       onClick: () => {
-        setSelectedOption('날짜순');
+        onSelectAction('날짜순');
         console.log('날짜순 정렬');
         handleToggleDropdown();
       },
@@ -27,7 +34,7 @@ export const HomeListDropdown = () => {
     {
       label: '카테고리순',
       onClick: () => {
-        setSelectedOption('카테고리순');
+        onSelectAction('카테고리순');
         console.log('카테고리순 정렬');
         handleToggleDropdown();
       },
@@ -39,7 +46,7 @@ export const HomeListDropdown = () => {
       <div
         ref={triggerRef}
         onClick={handleClick}
-        className='flex cursor-pointer items-center gap-1 text-gray-800'
+        className='flex cursor-pointer items-center gap-1 text-sm font-medium text-gray-600'
       >
         {selectedOption}
         <DownArrow />
