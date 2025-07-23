@@ -1,13 +1,15 @@
 'use client';
+
 import { Button } from '@/components/atoms/button/Button';
 import TextInput from '@/components/atoms/textInput/TextInput';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import { TopBar } from '@/components/molecules/topBar/TopBar';
 
 export default function MatchUserCode() {
   const [inputValue, setInputValue] = useState<string>('');
-  const [userCode, setUserCode] = useState<string>('무서운츄러스145');
+  const [userCode, setUserCode] = useState<string>('');
   const router = useRouter();
 
   const handleInput = (value: string) => {
@@ -15,25 +17,48 @@ export default function MatchUserCode() {
   };
 
   const handleConnect = () => {
-    if (inputValue === '무서운츄러스145') router.push('/sign-nickname');
+    if (inputValue === userCode) router.push('/sign-nickname');
   };
 
-  // 쿠키 기반 로그인 상태 확인
+  const getAccessToken = () => {
+    if (process.env.NODE_ENV === 'development') {
+      // 개발 환경에서는 localStorage
+      return localStorage.getItem('accessToken');
+    } else {
+      // 배포 환경에서는 쿠키에서 읽기
+      return Cookies.get('accessToken');
+    }
+  };
+
+  // 쿠키 기반 로그인 상태 확인 및 유저 코드 요청
   useEffect(() => {
+    const accessToken = getAccessToken();
+
+    if (!accessToken) {
+      console.warn('Access token이 없습니다. 홈으로 이동합니다.');
+      router.replace('/');
+      return;
+    }
+
     const checkLoginStatus = async () => {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}auth/status`,
           {
             credentials: 'include',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
         );
 
         const data = await res.json();
+        const isValid = data.code;
+
         console.log('로그인 상태 응답:', data);
 
-        if (data.isLoggedIn) {
-          router.replace('/match-usercode');
+        if (isValid === 200) {
+          fetchMatchCode(accessToken);
         } else {
           console.log('로그인 실패 → 홈으로 이동');
           router.replace('/');
@@ -41,6 +66,32 @@ export default function MatchUserCode() {
       } catch (err) {
         console.error('로그인 상태 확인 실패:', err);
         router.replace('/');
+      }
+    };
+
+    const fetchMatchCode = async (token: string) => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}api/couple/match-code`,
+          {
+            credentials: 'include',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+
+        const data = await res.json();
+        const isValid = data.code;
+        console.log('매치 코드 응답:', data);
+
+        if (isValid === 200 && data.data?.matchCode) {
+          setUserCode(data.data.matchCode);
+        } else {
+          console.warn('매치 코드 응답 실패');
+        }
+      } catch (err) {
+        console.error('매치 코드 불러오기 실패:', err);
       }
     };
 
@@ -71,7 +122,7 @@ export default function MatchUserCode() {
         <div className='mb-6 w-full max-w-[350px] rounded-lg bg-gray-100 p-5 text-center font-medium'>
           <p className='mb-1 text-sm text-gray-400'>내 코드</p>
           <p className='text-lg text-primary-500 underline decoration-primary-500'>
-            {userCode}
+            {userCode || '코드 불러오는 중...'}
           </p>
         </div>
 

@@ -4,6 +4,7 @@ import { Button } from '@/components/atoms/button/Button';
 import TextInput from '@/components/atoms/textInput/TextInput';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import { TopBar } from '@/components/molecules/topBar/TopBar';
 
 export default function SignNickName() {
@@ -15,39 +16,52 @@ export default function SignNickName() {
     setInputValue(value);
   };
 
+  const getAccessToken = () => {
+    return process.env.NODE_ENV === 'development'
+      ? localStorage.getItem('accessToken')
+      : Cookies.get('accessToken');
+  };
+
   const handleConnect = async () => {
     if (inputValue.length === 0 || gender === '') return;
 
-    // GROOM: 신랑 / BRIDE: 신부
+    const accessToken = getAccessToken();
+    if (!accessToken) {
+      console.warn('Access token이 없습니다. 다시 로그인해주세요.');
+      router.push('/');
+      return;
+    }
+
     const mappedGender = gender === 'male' ? 'GROOM' : 'BRIDE';
 
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/couple`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify({
-            gender: mappedGender,
-            nickName: inputValue,
-          }),
+    // try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/couple`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+        credentials: 'include',
+        body: JSON.stringify({
+          gender: mappedGender,
+          nickName: inputValue,
+        }),
+      },
+    );
 
-      if (!res.ok) {
-        throw new Error(`요청 실패: ${res.status}`);
-      }
+    const result = await res.json();
+    console.log('result:', result);
 
-      const result = await res.json();
-      console.log('요청 성공:', result);
+    // if (result.code !== 200) {
+    //   throw new Error(`요청 실패: ${result.message}`);
+    // }
 
-      router.push(`/home/${inputValue}`);
-    } catch (error) {
-      console.error('요청 중 오류 발생:', error);
-    }
+    router.push(`/home/${inputValue}`);
+    // } catch (error) {
+    //   console.error('요청 중 오류 발생:', error);
+    // }
   };
 
   return (
@@ -92,7 +106,11 @@ export default function SignNickName() {
               return (
                 <label
                   key={value}
-                  className={`flex-1 cursor-pointer rounded-full border px-4 py-2 text-center font-semibold transition-all duration-150 ${isSelected ? 'border-gray-500 bg-primary-500 text-black' : 'bg-black text-white'} `}
+                  className={`flex-1 cursor-pointer rounded-full px-4 py-2 text-center font-semibold transition-all duration-150 ${
+                    isSelected
+                      ? 'bg-primary-500 text-black'
+                      : 'bg-black text-white'
+                  } border-none`}
                 >
                   <input
                     type='radio'
