@@ -11439,6 +11439,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-circular-progressbar@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "react-circular-progressbar@npm:2.2.0"
+  peerDependencies:
+    react: ">=0.14.0"
+  checksum: 10c0/77655598d48a826fff9a6fd2f6b61349bb2e762d1774c0bcd5a374916347e1d03821e51cd7ff0f294843f5088e569b0c266064af0a229403c510c238b3390a3b
+  languageName: node
+  linkType: hard
+
 "react-confetti@npm:^6.1.0":
   version: 6.1.0
   resolution: "react-confetti@npm:6.1.0"
@@ -13995,6 +14004,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.6.9"
     react: "npm:19.0.0-rc-66855b96-20241106"
     react-calendar: "npm:^5.1.0"
+    react-circular-progressbar: "npm:^2.2.0"
     react-dom: "npm:19.0.0-rc-66855b96-20241106"
     react-spring-bottom-sheet: "npm:^3.4.1"
     sd-tailwindcss-transformer: "npm:^2.1.0"

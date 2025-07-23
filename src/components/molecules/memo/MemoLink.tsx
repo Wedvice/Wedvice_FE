@@ -33,20 +33,19 @@ export const MemoLink = () => {
   };
 
   const MemoProfile = ({ role }: { role: RoleType }) => (
-    <div
-      onClick={() => handleOpen(role)}
-      className='flex cursor-pointer flex-col items-center -space-y-1'
-    >
+    <div className='flex flex-col items-center'>
       <Profile size='medium' />
-      <Memo size='small' />
+      <div onClick={() => handleOpen(role)} className='mt-3'>
+        <Memo size='small' />
+      </div>
     </div>
   );
 
   return (
     <>
-      <div className='mt-14 flex items-center justify-center'>
+      <div className='mt-14 flex items-center justify-center gap-x-[27.5px]'>
         <MemoProfile role='예신' />
-        <HeartIcon className='mx-2' />
+        <HeartIcon />
         <MemoProfile role='예랑' />
       </div>
       <BottomSheet

@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <BaseQueryClientProvider>
           <MemoProvider>
-            <div className='h-[100dvh] bg-gray-100 font-pretendard'>
+            <div className='h-[100dvh] bg-gray-50 font-pretendard'>
               {children}
             </div>
           </MemoProvider>

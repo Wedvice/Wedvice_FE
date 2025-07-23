@@ -7,11 +7,11 @@ interface ModalProps {
 export const Modal = ({ onClose, children }: PropsWithChildren<ModalProps>) => {
   return (
     <div
-      className='fixed inset-0 flex items-center justify-center bg-black/50'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black/50'
       onClick={onClose}
     >
       <div
-        className='bg-gray-200 p-5 rounded-lg shadow-lg'
+        className='rounded-lg bg-gray-200 p-5 shadow-lg'
         onClick={(e) => e.stopPropagation()}
       >
         {children}

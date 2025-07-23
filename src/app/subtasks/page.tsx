@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import SubtasksMain from '@/features/subtasks/SubtasksMain';
-import SubtasksTitle from '@/features/subtasks/SubtasksTItle';
 
+export type ManagerType = '예신' | '예랑' | '함께';
 export interface SubtasksMainProps {
   tasks: {
     id: string;
@@ -11,7 +10,7 @@ export interface SubtasksMainProps {
     title: string;
     cost: number;
     date: string;
-    manager: '예신' | '예랑' | '함께';
+    manager: ManagerType;
     onDelete?: () => void;
   }[];
 }
@@ -48,9 +47,11 @@ const initialData: SubtasksMainProps = {
 
 const SubtasksPage = () => {
   return (
-    <div className='flex w-full flex-col overflow-hidden p-5'>
-      <SubtasksMain tasks={initialData.tasks} />
-    </div>
+    <>
+      <div className='flex w-full flex-col overflow-hidden'>
+        <SubtasksMain tasks={initialData.tasks} />
+      </div>
+    </>
   );
 };
 
