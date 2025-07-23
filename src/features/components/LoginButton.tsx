@@ -3,8 +3,8 @@
 import React from 'react';
 
 const LoginButton = () => {
-  const KAKAO_AUTH_URL = `${process.env.NEXT_PUBLIC_KAKAO_AUTH_URL}`;
-
+  const redirectUrl = encodeURIComponent('http://localhost:3000/Redirection');
+  const KAKAO_AUTH_URL = `${process.env.NEXT_PUBLIC_KAKAO_AUTH_URL}?redirectUrl=${redirectUrl}`;
   const loginHandler = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
