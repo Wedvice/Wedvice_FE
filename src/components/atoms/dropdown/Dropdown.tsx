@@ -8,7 +8,7 @@ interface DropdownProps {
 
 export const Dropdown = ({ options }: DropdownProps) => {
   return (
-    <div className='absolute right-0 top-4 w-28 rounded-md bg-gray-200 font-pretendard text-white shadow-lg'>
+    <div className='absolute right-0 top-4 w-28 rounded-md bg-gray-200 font-pretendard text-sm font-medium text-white shadow-lg'>
       {options.map((option, index) => (
         <div key={option.label}>
           {index > 0 && <div className='border-t border-gray-300' />}
