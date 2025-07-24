@@ -4,8 +4,9 @@ import AlarmDefaultIcon from '@/assets/wed_icon/icon_28/alarm_default.svg';
 import { BottomNavigation } from '@/components/molecules/bottomNavigation';
 import { LeftAlignedTopBar } from '@/components/molecules/topBar';
 import { useCalendarContext } from '@/contexts/calendar';
-import { CalendarData } from '@/types/calendar/calendarTypes';
+import { CalendarData, getEventsForDate } from '@/types/calendar/calendarTypes';
 import { useRouter } from 'next/navigation';
+import { CalendarBottomSheet } from './components/CalendarBottomSheet';
 import { CalendarView } from './components/CalendarView';
 
 const dayData: CalendarData[] = [
@@ -119,6 +120,7 @@ const dayData: CalendarData[] = [
 export const Calendar = () => {
   const router = useRouter();
   const { selectedDate } = useCalendarContext();
+  const currentEvents = getEventsForDate(dayData, selectedDate);
 
   return (
     <div className='relative flex h-full w-full flex-col'>
@@ -130,6 +132,7 @@ export const Calendar = () => {
 
       <div className='h-full flex-1 overflow-y-scroll px-5 pt-4 scrollbar-hide'>
         <CalendarView data={dayData} />
+        <CalendarBottomSheet data={currentEvents} />
       </div>
 
       <BottomNavigation />

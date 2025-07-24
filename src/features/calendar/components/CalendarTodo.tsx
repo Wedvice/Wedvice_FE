@@ -1,10 +1,4 @@
-export type TodoType = '예신' | '예랑' | '함께';
-
-const colorMap: Record<TodoType, string> = {
-  예신: 'bg-primary-300',
-  예랑: 'bg-pink',
-  함께: 'bg-blue',
-};
+import { TodoType, colorMap } from '@/types/calendar/calendarTypes';
 
 interface CalendarTodoProps {
   title: string;
