@@ -4,18 +4,64 @@ import { Button } from '@/components/atoms/button/Button';
 import TextInput from '@/components/atoms/textInput/TextInput';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import { TopBar } from '@/components/molecules/topBar/TopBar';
 
 export default function SignNickName() {
   const [inputValue, setInputValue] = useState<string>('');
+  const [gender, setGender] = useState<string>('');
   const router = useRouter();
 
   const handleInput = (value: string) => {
     setInputValue(value);
   };
 
-  const handleConnect = () => {
-    if (inputValue.length > 0) router.push(`/home/${inputValue}`);
+  const getAccessToken = () => {
+    return process.env.NODE_ENV === 'development'
+      ? localStorage.getItem('accessToken')
+      : Cookies.get('accessToken');
+  };
+
+  const handleConnect = async () => {
+    if (inputValue.length === 0 || gender === '') return;
+
+    const accessToken = getAccessToken();
+    if (!accessToken) {
+      console.warn('Access token이 없습니다. 다시 로그인해주세요.');
+      router.push('/');
+      return;
+    }
+
+    const mappedGender = gender === 'male' ? 'GROOM' : 'BRIDE';
+
+    // try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/couple`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          gender: mappedGender,
+          nickName: inputValue,
+        }),
+      },
+    );
+
+    const result = await res.json();
+    console.log('result:', result);
+
+    // if (result.code !== 200) {
+    //   throw new Error(`요청 실패: ${result.message}`);
+    // }
+
+    router.push(`/home/${inputValue}`);
+    // } catch (error) {
+    //   console.error('요청 중 오류 발생:', error);
+    // }
   };
 
   return (
@@ -28,6 +74,7 @@ export default function SignNickName() {
           router.push('/match-usercode');
         }}
       />
+
       <div className='mx-auto flex w-full min-w-[360px] max-w-[430px] grow flex-col items-center bg-gray-50 px-6 py-10'>
         <div className='mb-6 w-full text-left'>
           <h2 className='text-lg font-semibold text-primary-500'>연결 완료!</h2>
@@ -47,15 +94,49 @@ export default function SignNickName() {
             maxLength={2}
           />
         </div>
+
+        <div className='mt-6 w-full max-w-[350px]'>
+          <div className='flex justify-between gap-4'>
+            {[
+              { value: 'male', label: '남자' },
+              { value: 'female', label: '여자' },
+            ].map(({ value, label }) => {
+              const isSelected = gender === value;
+
+              return (
+                <label
+                  key={value}
+                  className={`flex-1 cursor-pointer rounded-full px-4 py-2 text-center font-semibold transition-all duration-150 ${
+                    isSelected
+                      ? 'bg-primary-500 text-black'
+                      : 'bg-black text-white'
+                  } border-none`}
+                >
+                  <input
+                    type='radio'
+                    name='gender'
+                    value={value}
+                    checked={isSelected}
+                    onChange={(e) => setGender(e.target.value)}
+                    className='hidden'
+                  />
+                  {label}
+                </label>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <div className='absolute bottom-10 left-0 flex w-full justify-center px-6'>
         <Button
           className='w-full max-w-[350px] rounded-lg py-3 text-lg text-white'
-          variant={inputValue.length > 0 ? 'primary_fill' : 'gray_fill'}
+          variant={
+            inputValue.length > 0 && gender ? 'primary_fill' : 'gray_fill'
+          }
           rounded='lg'
           onClick={handleConnect}
-          disabled={inputValue.length === 0}
+          disabled={inputValue.length === 0 || gender === ''}
         >
           연결하기
         </Button>
